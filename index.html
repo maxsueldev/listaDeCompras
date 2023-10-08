@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de compras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poller+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="form-container" data-formulario>
+        <form class="form">
+            <input type="text" id="receber-itens" placeholder="Digite o item que deseja adicionar">
+            <button>Salvar item</button>
+        </form>
+    </div>
+    <div class="list-container">
+        <div class="list-itens">
+            <h2>Lista de compras</h2>
+            <ul id="lista-de-itens" class="ul-lista-compras">
+                <li>
+                    <div>
+                        <input type="checkbox">
+                        <input type="text" value="Arroz" disabled>
+                    </div>
+                    <div>
+                        <i class="fa-regular fa-floppy-disk is-clickable"></i><i class="fa-regular is-clickable fa-pen-to-square editar"></i>
+                        <i class="fa-solid fa-trash deletar"></i>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input type="checkbox">
+                        <input type="text" value="Feijão" disabled>
+                    </div>
+                    <div>
+                        <i class="fa-regular fa-floppy-disk is-clickable"></i><i class="fa-regular is-clickable fa-pen-to-square editar"></i>
+                        <i class="fa-solid fa-trash deletar"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="list-itens">
+            <h2>Comprados</h2>
+            <ul id="itens-comprados" class="ul-comprados">
+                <li>
+                    <div>
+                        <input type="checkbox">
+                        <span class="elemento-item-comprado">Açucar</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-trash deletar"></i>   
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input type="checkbox">
+                        <span class="elemento-item-comprado">Carne</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-trash deletar"></i>   
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
