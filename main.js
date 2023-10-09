@@ -5,6 +5,8 @@ const itensInput = document.querySelector("#receber-itens");
 const ulItens = document.querySelector('.ul-lista-compras');
 const ulComprados = document.querySelector('.ul-comprados');
 
+let itemAEditar;
+
 mostrarItem();
 
 formulario.addEventListener("submit", event => {
@@ -59,10 +61,10 @@ function mostrarItem() {
             <li data-value=${index}>
                 <div>
                     <input type="checkbox">
-                    <input type="text" value="${item.valor}" disabled>
+                    <input type="text" value="${item.valor}" ${index !== Number(itemAEditar) ? 'disabled' : ''}>
                 </div>
                 <div>
-                    <i class="fa-regular fa-floppy-disk is-clickable"></i><i class="fa-regular is-clickable fa-pen-to-square editar"></i>
+                    ${index === Number(itemAEditar) ? '<button onclick="atualizarItem()"><i class="fa-regular fa-floppy-disk"></i></button>' : '<i class="fa-regular fa-pen-to-square editar"></i>'}
                     <i class="fa-solid fa-trash deletar"></i>
                 </div>
             </li>
@@ -77,7 +79,31 @@ function mostrarItem() {
                 mostrarItem();
             })
         });
+
+        const itensDeletar = document.querySelectorAll('.deletar');
+        itensDeletar.forEach(i => {
+            i.addEventListener('click', event => {
+                valorElemento = event.target.parentElement.parentElement.getAttribute('data-value');
+                listaDeItens.splice(valorElemento, 1);
+                mostrarItem();
+            })
+        });
+
+        const itensEditar = document.querySelectorAll('.editar');
+        itensEditar.forEach(i => {
+            i.addEventListener('click', event => {
+                itemAEditar = event.target.parentElement.parentElement.getAttribute('data-value');
+                mostrarItem();
+            });
+        });
     });
 
     atualizarLocalStorage();
+}
+
+function atualizarItem() {
+    const itemEditado = document.querySelector(`[data-value="${itemAEditar}"] input[type="text"]`);
+    listaDeItens[itemAEditar].valor = itemEditado.value;
+    itemAEditar = -1;
+    mostrarItem();
 }
